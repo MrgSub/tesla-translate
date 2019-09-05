@@ -95,10 +95,20 @@ const findModelCode = data => {
 	}
 };
 
+// Get a direct link to an image from the compositor by passing the option_codes 
+const getImageURL = data => {
+	let color = findColorCode(data);
+	let model = findModelCode(data);
+	let wheels = findWheels(data);	
+	let url = `https://static-assets.tesla.com/configurator/compositor?&options=$${wheels},$${color}&view=STUD_SIDE&model=${model}&size=1441&bkba_opt=2`;
+	return url
+}
+
 export default {
 	findColor,
 	findModel,
 	findModelCode,
 	findColorCode,
-	findWheels
+	findWheels,
+	getImageURL
 };
